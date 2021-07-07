@@ -31,6 +31,26 @@ function Main(props) {
         getBeers();
     };
 
+    //update beers
+    const updateBeers = async (beer, id) => {
+        await fetch(URL + id, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'Application/json'
+            },
+            body: JSON.stringify(beer)
+        });
+        getBeers();
+    }
+
+    //delete beers
+    const deleteBeers = async (id) => {
+        await fetch(URL + id, {
+            method: 'DELETE',
+        });
+        getBeers();
+    }
+
     useEffect(() => getBeers(), []);
 
 
@@ -43,7 +63,9 @@ function Main(props) {
                 <Route path='/beers/:id' render={(rp) => (
                     <Show  
                     {...rp} 
-                    beers={beers} 
+                    beers={beers}
+                    deleteBeers={deleteBeers}
+                    updateBeers={updateBeers} 
                     />
                 )} />
                     
