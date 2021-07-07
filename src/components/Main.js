@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Index from '../pages/Index';
 import Show from '../pages/Show';
+
 
 function Main(props) {
     //initializes beers state 
@@ -52,6 +53,7 @@ function Main(props) {
     }
 
     useEffect(() => getBeers(), []);
+    
 
 
     return (
@@ -60,14 +62,23 @@ function Main(props) {
                 <Route exact path='/'>
                     <Index beers={beers} createBeers={createBeers}/>
                 </Route>
-                <Route path='/beers/:id' render={(rp) => (
-                    <Show  
-                    {...rp} 
-                    beers={beers}
-                    deleteBeers={deleteBeers}
-                    updateBeers={updateBeers} 
-                    />
-                )} />
+                <Route path='/beers/:id' render={(rp) => {
+                    if(!props.user) {
+                        //show alert
+                        alert('You must be logged in to access this action. Please log in to continue.');
+                        return <Redirect to='/' />
+                    } else {
+                        return (
+                            <Show  
+                                {...rp} 
+                                beers={beers}
+                                deleteBeers={deleteBeers}
+                                updateBeers={updateBeers} 
+                            />
+                        );
+                    }
+
+                }} />
                     
             </Switch>
         </main>
