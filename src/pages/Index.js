@@ -20,6 +20,11 @@ function Index(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if(!props.user) {
+            alert('You must be logged in to access this action.');
+            return; // exit the function
+        }
+
         props.createBeers(newForm);
         setNewForm({
             name: '',
@@ -67,7 +72,9 @@ function Index(props) {
                 <input type="text" name="city" onChange={handleChange} value={newForm.city} placeholder="city" />
                 <input type="text" name="state" onChange={handleChange} value={newForm.state} placeholder="state" />
                 <input type="text" name="brewery" onChange={handleChange} value={newForm.brewery} placeholder="brewery" />
-                <input type="submit" value="submit" />
+                <button 
+                    type="submit" 
+                    disabled={!props.user}>Submit</button>
             </form>
             { props.beers ? loaded() : loading() }
         </section>
