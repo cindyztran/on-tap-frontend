@@ -34,9 +34,6 @@ function Main(props) {
     useEffect(() => getBeers(), []);
 
 
-
-
-
     return (
         <main>
             <Switch>
@@ -44,7 +41,10 @@ function Main(props) {
                     <Index beers={beers} createBeers={createBeers}/>
                 </Route>
                 <Route path='/beers/:id' render={(rp) => (
-                    <Show  {...rp}/>
+                    <Show  
+                    {...rp} 
+                    beers={beers} 
+                    />
                 )} />
                     
             </Switch>
