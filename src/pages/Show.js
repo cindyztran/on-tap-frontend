@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Show({ match, beers, updateBeers }) {
+function Show({ match, history, beers, updateBeers, deleteBeers }) {
 
     const [ editForm, setEditForm ] = useState({
         name: '',
@@ -17,9 +17,9 @@ function Show({ match, beers, updateBeers }) {
     useEffect(() => {
         if(beers) {
             const id = match.params.id;
-            const beer = beers.find(b => b._id === id);
-            setBeer(beer);
-            setEditForm(beer);
+            const foundBeer = beers.find(b => b._id === id);
+            setBeer(foundBeer);
+            setEditForm(foundBeer);
         }
     }, [beers, match])
     
@@ -35,7 +35,7 @@ function Show({ match, beers, updateBeers }) {
             <div className="show">
 
                 <div className="show-beer">
-
+                    <button onClick={() => handleDelete(beer._id)}>Delete</button>
                     <h1>{beer.name}</h1>
 
                     <h5>{beer.city}, {beer.state} at {beer.brewery} brewery</h5>
@@ -64,6 +64,12 @@ function Show({ match, beers, updateBeers }) {
         const {_id, name, image, caption, rating, city, state, brewery} = editForm;
         updateBeers({_id, name, image, caption, rating, city, state, brewery}, _id);
 
+    }
+
+    const handleDelete = (id) => {
+        deleteBeers(id);
+        history.push('/');
+        
     }
 
     return (
