@@ -17,10 +17,12 @@ function Show({ match, beers }) {
             <div className="show">
                 <div className="show-beer">
                     <h1>{beer.name}</h1>
+                    <h5>{beer.city}, {beer.state} at {beer.brewery} brewery</h5>
                     { beer.image && <img src={beer.image} alt={beer.name} />}
-                    <h3>{beer.caption}</h3>
-                    <h3>{beer.rating}</h3>
-                    <h4>{beer.city}, {beer.state} at {beer.brewery} brewery</h4>
+                    <section className="caption-box">
+                        <h3 className="caption">{beer.caption}</h3>
+                        <h3 className="rating">{beer.rating}</h3>
+                    </section>
                 </div>
             </div>
         )
