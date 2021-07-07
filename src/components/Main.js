@@ -9,7 +9,9 @@ function Main(props) {
     const [ beers, setBeers ] = useState(null); //nullifies initial value 
 
     //heroku backend
-    const URL = 'https://on-tap-backend.herokuapp.com/beers/';
+    // const URL = 'https://on-tap-backend.herokuapp.com/beers/';
+
+    const URL = 'http://localhost:4000/beers/'
 
     //fetch beers data from heroku backend
     const getBeers = async () => {
@@ -20,6 +22,8 @@ function Main(props) {
 
     //create beers using fetch
     const createBeers = async (beer) => {
+        const token = await props.user.getIdToken();
+        console.log(token);
         //post request to create beers
         await fetch(URL, {
             method: 'POST',
@@ -60,7 +64,7 @@ function Main(props) {
         <main>
             <Switch>
                 <Route exact path='/'>
-                    <Index beers={beers} createBeers={createBeers}/>
+                    <Index user={props.user} beers={beers} createBeers={createBeers}/>
                 </Route>
                 <Route path='/beers/:id' render={(rp) => {
                     if(!props.user) {
