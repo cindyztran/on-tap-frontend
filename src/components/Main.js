@@ -9,9 +9,9 @@ function Main(props) {
     const [ beers, setBeers ] = useState(null); //nullifies initial value 
 
     //heroku backend
-    // const URL = 'https://on-tap-backend.herokuapp.com/beers/';
+    const URL = 'https://on-tap-backend.herokuapp.com/beers/';
 
-    const URL = 'http://localhost:4000/beers/'
+    // const URL = 'http://localhost:4000/beers/'
 
     //fetch beers data from heroku backend
     const getBeers = async () => {
@@ -28,7 +28,8 @@ function Main(props) {
         await fetch(URL, {
             method: 'POST',
             headers: {
-                'Content-type': 'Application/json'
+                'Content-type': 'Application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify(beer)
         });
@@ -38,10 +39,12 @@ function Main(props) {
 
     //update beers
     const updateBeers = async (beer, id) => {
+        const token = await props.user.getIdToken();
         await fetch(URL + id, {
             method: 'PUT',
             headers: {
-                'Content-type': 'Application/json'
+                'Content-type': 'Application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify(beer)
         });
@@ -50,8 +53,12 @@ function Main(props) {
 
     //delete beers
     const deleteBeers = async (id) => {
+        const token = await props.user.getIdToken();
         await fetch(URL + id, {
             method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
         });
         getBeers();
     }
