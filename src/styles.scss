@@ -1,3 +1,18 @@
+//Body
+body {
+    margin: 0 auto;
+}
+
+//Nav
+.top-nav {
+    display:flex;
+    justify-content: flex-start;
+    div {
+        margin: 10px;
+        font-size: large;
+    }
+}
+//Index page
 .beer {
     display: flex;
     flex-direction: column;
@@ -12,6 +27,7 @@
     }
 }
 
+// Show page
 .show {
     display: flex;
     justify-content: center;
@@ -23,7 +39,7 @@
     }
 }
 
-
+// Caption
 .caption-box {
     clear:both;
 
@@ -38,6 +54,8 @@
 a[href] {
     text-decoration: none;
 }
+
+//Images 
 
 img {
     height: 300px;
