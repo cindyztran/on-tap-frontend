@@ -1,15 +1,26 @@
+//Variables
+$primarycolor: #004170;
+$accentcolor: #eae398;
+
 //Body
 body {
     margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    background-color: whitesmoke;
 }
 
 //Nav
 .top-nav {
     display:flex;
     justify-content: flex-start;
+    background-color: $primarycolor;
+    a[href] {
+        color: $accentcolor;
+        font-family: 'Special Elite', cursive;
+    }
     div {
         margin: 10px;
-        font-size: large;
+        font-size: 20px;
     }
 }
 //Index page
@@ -20,10 +31,12 @@ body {
     justify-content: center;
 
     .index-beer {
-        border: solid black 1px;
+        border: solid $primarycolor 1px;
         width: 300px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         padding: 0px 10px 0px 10px;
+        border-radius: 10px;
+        background-color: white;
     }
 }
 
@@ -33,9 +46,12 @@ body {
     justify-content: center;
     
     .show-beer {
-        border: solid black 1px;
+        border: solid $primarycolor 1px;
         padding: 0px 10px 0px 10px;
-        
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        background-color: white;
     }
 }
 
@@ -59,4 +75,48 @@ a[href] {
 
 img {
     height: 300px;
+}
+
+//Input
+input {
+    padding: 5px 0px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    width: 50%;
+    clear: both;
+    border-radius: 4px;
+    border: solid $primarycolor 1px;
+    
+} 
+
+//button
+button {
+    background-color: $primarycolor;
+    border-radius: 5px;
+    margin: 10px 0px 10px 0px;
+    color: white;
+    cursor: pointer;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    &:hover {
+        background-color: #00253f;
+    }
+}
+
+//delete button
+.show-delete {
+    display: flex;
+    margin-top: 5px;
+}
+
+h3 { 
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+h1 {
+    font-size: 15px;
+}
+
+h5, h6 {
+    font-size: 12px;
 }

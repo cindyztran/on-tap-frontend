@@ -18,17 +18,21 @@ function Header(props) {
                     {
                         props.user ?
                         <>
-                        <div style={{marginRight: 10 }}>Welcome, {props.user.displayName}</div>
+                        <div style={{marginRight: 10, color: 'white',
+                        fontSize: 15 }}>Welcome, {props.user.displayName}</div>
                         <img src={props.user.photoURL} alt={props.user.displayName} style={{
                             height: 30,
                             borderRadius: '50%',
-                            marginRight: 10
+                            marginRight: 10,
+                            
                         }}/>
                         <div 
                             onClick={logout}
                             style={{
                             cursor: 'pointer',
-                            marginRight: 10
+                            marginRight: 10,
+                            color: 'white',
+                            fontSize: 15
                         }}>
                             Logout
                         </div>

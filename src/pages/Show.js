@@ -35,10 +35,10 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
             <div className="show">
 
                 <div className="show-beer">
-                    <button onClick={() => handleDelete(beer._id)}>Delete</button>
-                    <h1>{beer.name}</h1>
+                    <button className="show-delete" onClick={() => handleDelete(beer._id)}>Delete</button>
+                    <h1 style={{color: '#004170'}}>{beer.name}</h1>
 
-                    <h5>{beer.city}, {beer.state} at {beer.brewery} brewery</h5>
+                    <h6>{beer.city}, {beer.state} at {beer.brewery} brewery</h6>
 
                     { beer.image && <img src={beer.image} alt={beer.name} />}
 
@@ -124,9 +124,9 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
                 name="brewery" 
                 value={editForm.brewery} 
                 onChange={handleChange} 
-                />
+                /><br/>
 
-              <input type="submit" value="Edit" />
+              <button>Edit</button>
 
           </form>
       </div>  
