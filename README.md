@@ -1,6 +1,6 @@
 # On Tap
 
-A MERN Stack App to allow users to create and rate beers.
+A MERN Stack full CRUD App to allow users to post and rate beers.
 
 The app was created based on a vision of a social media app for to users to share their local beer experiences and ratings. 
 
@@ -37,12 +37,15 @@ The app was created based on a vision of a social media app for to users to shar
 ![screenshot](./images/show-page.png)
 
 ## Getting Started
+[Click here](https://trello.com/b/KSW0B6jO/project-3) to see the project's planning. 
+
 [Click here](https://on-tap.netlify.app/) to see the deployed app.
 
 ## Future Enhancements
 - As a user, I should be able to favorite a post 
 - As a user, I should be able to comment on a post. 
-
+- As a user, I should be able to see the display names for user created posts. 
+- As a user, I should be able to see the ABV content for each post. 
 
 # Getting Started with Create React App
 
