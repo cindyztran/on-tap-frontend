@@ -1,3 +1,49 @@
+# On Tap
+
+A MERN Stack App to allow users to create and rate beers.
+
+The app was created based on a vision of a social media app for to users to share their local beer experiences and ratings. 
+
+## User Stories 
+- As a user, I want to be able to log in and out.
+- As a user, I want to create and rate a beer.
+- As a user, I want to see all posts, and click on a post to expand. 
+- As a user, I want edit/delete/create to restricted to authenticated users. 
+
+## Technologies 
+- HTML5
+- Sass
+- JavaScript
+- React
+- Node
+- Express
+- Mongoose
+- MongoDB
+- morgan
+- Dotenv
+- Firebase Google Auth
+- [Google Fonts](https://fonts.google.com/)
+
+## Screenshots
+
+### ERD
+![screenshot](./images/p3-ERD.png)
+
+### Wireframes
+![screenshot](./images/p3-wireframe.png)
+
+### Images of Working App 
+![screenshot](./images/home-index.png)
+![screenshot](./images/show-page.png)
+
+## Getting Started
+[Click here](https://on-tap.netlify.app/) to see the deployed app.
+
+## Future Enhancements
+- As a user, I should be able to favorite a post 
+- As a user, I should be able to comment on a post. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
