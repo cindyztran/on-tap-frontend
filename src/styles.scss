@@ -74,7 +74,10 @@ a[href] {
 //Images 
 
 img {
-    height: 300px;
+    max-width: 100% !important;
+    height: auto;
+    width: auto;
+
 }
 
 //Input
