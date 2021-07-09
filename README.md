@@ -27,14 +27,14 @@ The app was created based on a vision of a social media app for to users to shar
 ## Screenshots
 
 ### ERD
-![screenshot](./images/p3-ERD.png)
+![screenshot](/images/p3-ERD.png)
 
 ### Wireframes
-![screenshot](./images/p3-wireframe.png)
+![screenshot](/images/p3-wireframe.png)
 
 ### Images of Working App 
-![screenshot](./images/home-index.png)
-![screenshot](./images/show-page.png)
+![screenshot](/images/home-index.png)
+![screenshot](/images/show-page.png)
 
 ## Getting Started
 [Click here](https://trello.com/b/KSW0B6jO/project-3) to see the project's planning. 
@@ -45,7 +45,7 @@ The app was created based on a vision of a social media app for to users to shar
 - As a user, I should be able to favorite a post 
 - As a user, I should be able to comment on a post. 
 - As a user, I should be able to see the display names for user created posts. 
-- As a user, I should be able to see the ABV content for each post. 
+- As a user, I should be able to add and see the ABV content for each posted beer.
 
 # Getting Started with Create React App
 
