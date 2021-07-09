@@ -42,7 +42,8 @@ function Header(props) {
                         onClick={login} 
                         style={{
                         cursor: 'pointer',
-                        marginRight: 10
+                        marginRight: 10,
+                        color: 'white',
                     }}>
                     Login
                 </div>
