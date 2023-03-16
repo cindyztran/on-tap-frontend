@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Index from '../pages/Index';
-import Show from '../pages/Show';
+import Index from '../../pages/Index';
+import Show from '../../pages/Show';
 
 
 function Main(props) {
@@ -9,14 +9,15 @@ function Main(props) {
     const [ beers, setBeers ] = useState(null); //nullifies initial value 
 
     //heroku backend
-    const URL = 'https://on-tap-backend.herokuapp.com/beers/';
+    // const URL = 'https://on-tap-backend.herokuapp.com/beers/';
 
-    // const URL = 'http://localhost:4000/beers/'
+    const URL = 'http://localhost:4000/beers/'
 
     //fetch beers data from heroku backend
     const getBeers = async () => {
         const response = await fetch(URL);
         const data = await response.json();
+        console.log({data})
         setBeers(data);
     }
 

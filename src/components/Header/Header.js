@@ -1,4 +1,4 @@
-import { login, logout } from '../services/firebase';
+import { login, logout } from '../../services/firebase';
 import { Link } from "react-router-dom";
 
 function Header(props) {

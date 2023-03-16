@@ -3,8 +3,8 @@ import { auth } from './services/firebase';
 import './App.css';
 
 //import components
-import Header from './components/Header';
-import Main from './components/Main';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
 
 function App() {
 
