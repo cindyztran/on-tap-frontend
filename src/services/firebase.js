@@ -18,16 +18,26 @@ const firebaseConfig = {
 
   //login action
   const loginWithGoogle = () => {
-      return auth.signInWithPopup(provider);
+    return auth.signInWithPopup(provider);
+  }
+
+  const signupWithEmailAndPassword = async (email, password) => {
+    await auth.createUserWithEmailAndPassword(email, password)
+  }
+
+  const loginWithEmailAndPassword = async (email, password) => {
+    await auth.signInWithEmailAndPassword(email, password)
   }
 
   //logout action
   const logout = () => {
-      return auth.signOut();
+    return auth.signOut();
   }
   
   export {
       loginWithGoogle, 
+      loginWithEmailAndPassword,
+      signupWithEmailAndPassword,
       logout,
       auth
   }

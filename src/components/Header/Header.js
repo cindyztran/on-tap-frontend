@@ -1,4 +1,4 @@
-import { login, logout } from '../../services/firebase';
+import { logout } from '../../services/firebase';
 import { Link } from "react-router-dom";
 
 function Header(props) {
@@ -38,15 +38,7 @@ function Header(props) {
                         </div>
                     </>
                     :
-                    <div
-                        onClick={login} 
-                        style={{
-                        cursor: 'pointer',
-                        marginRight: 10,
-                        color: 'white',
-                    }}>
-                    Login
-                </div>
+                    null
                 
                 }
 

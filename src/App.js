@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { auth } from './services/firebase';
-import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 //import components
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Login from './components/Authentication/Login';
-import Signup from './components/Authentication/Signup';
 import PublicRoute from './components/global/PublicRoute'
 import PrivateRoute from './components/global/PrivateRoute'
 import routes from './routes'
+import Authentication from './pages/Authentication/Authentication';
 
 
 const ProtectedRoutes = () => {
@@ -39,15 +38,15 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <PublicRoute 
+        {/* <PublicRoute 
           path="/login"
           exact
           component={(props) => <Login {...props} />}
-        />
+        /> */}
         <PublicRoute 
           path="/signup"
           exact
-          component={(props) => <Signup {...props} />}
+          component={(props) => <Authentication {...props} />}
         />
         <PrivateRoute
           isAuthenticated={user}

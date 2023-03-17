@@ -6,7 +6,7 @@ const PublicRoute = ({ children, isAuthenticated , ...rest }) => {
       {...rest}
       render={(props) => (
         !isAuthenticated ? children : 
-        <Redirect {...props} to="/" />
+        <Redirect {...props} to="/signup" />
       )}
     />
   );

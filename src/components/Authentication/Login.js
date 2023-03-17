@@ -1,34 +1,37 @@
-import Header from '../Header/Header'
-import { loginWithGoogle } from '../../services/firebase'
+import { loginWithGoogle, loginWithEmailAndPassword } from '../../services/firebase'
 
 const Login = () => {
     return (
         <div className="">
-            <Header/>
             <div className="row">
                 <input
+                    className='my-1 p-2'
                     type="text"
                     placeholder="Enter email..."
                 />
-                <div className="row">
                     <input
+                        className='my-1 p-2'
                         type="password"
                         placeholder="Enter password"
                     />
-                </div>
             </div>
             <div className="row">
                 <button
+                    className="my-1 rounded"
+                    onClick={() => loginWithEmailAndPassword()}
                 
                 >
                     Login
                 </button>
             </div>
-            <button
-                onClick={() => loginWithGoogle()}
-            >
-                Login with Google
-            </button>
+            <div className='row'>
+                <button
+                    className="my-1 rounded"
+                    onClick={() => loginWithGoogle()}
+                >
+                    Login with Google
+                </button>
+            </div>
         </div>
     )
 }

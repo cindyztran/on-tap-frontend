@@ -6,9 +6,6 @@ const routes = [
         component: lazy(() => import ('./pages/Home')),
 
     },
-    {
-        path: ''
-    }
 ]
 
 export default routes;
