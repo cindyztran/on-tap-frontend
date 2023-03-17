@@ -3,14 +3,31 @@ import { auth } from './services/firebase';
 import './App.css';
 
 //import components
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Login from './components/Authentication/Login';
+import Signup from './components/Authentication/Signup';
+import PublicRoute from './components/global/PublicRoute'
+import PrivateRoute from './components/global/PrivateRoute'
+import routes from './routes'
 
-function App() {
 
+const ProtectedRoutes = () => {
+  <Switch>
+    {routes.map(({component: Component, path, exact }) => (
+      <Route
+        path
+        key={path}
+        exact={exact}
+        component={Component}
+      />
+    ))}
+  </Switch>
+}
+
+const App = () => {
   //user state
   const [ user, setUser ] = useState(null);
-  
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setUser(user)
@@ -20,11 +37,25 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header user={user} />
-      <Main user={user} />
-      
-    </div>
+    <Router>
+      <Switch>
+        <PublicRoute 
+          path="/login"
+          exact
+          component={(props) => <Login {...props} />}
+        />
+        <PublicRoute 
+          path="/signup"
+          exact
+          component={(props) => <Signup {...props} />}
+        />
+        <PrivateRoute
+          isAuthenticated={user}
+        >
+          {ProtectedRoutes}
+        </PrivateRoute>
+      </Switch>
+    </Router>
   );
 }
 

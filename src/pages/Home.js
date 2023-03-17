@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
-function Index(props) {
+const Home = (props) => {
 
     const [ newForm, setNewForm ] = useState({
         name: '',
@@ -81,4 +81,4 @@ function Index(props) {
     )
 }
 
-export default Index;
+export default Home;

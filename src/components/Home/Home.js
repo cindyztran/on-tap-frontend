@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Index from '../../pages/Index';
 import Show from '../../pages/Show';
+import Login from "../Authentication/Login";
 
 
-function Main(props) {
+const Home = (props) => {
     //initializes beers state 
     const [ beers, setBeers ] = useState(null); //nullifies initial value 
 
@@ -71,8 +72,15 @@ function Main(props) {
     return (
         <main>
             <Switch>
-                <Route exact path='/'>
+                <Route exact path='/' render={(rp) => {
+                    if (!props.user) {
+                        return (
+                            <Login {...rp} />
+                        )
+                    }
                     <Index user={props.user} beers={beers} createBeers={createBeers}/>
+                }}>
+
                 </Route>
                 <Route path='/beers/:id' render={(rp) => {
                     if(!props.user) {
@@ -97,4 +105,4 @@ function Main(props) {
         );
 }
 
-export default Main;
+export default Home;
