@@ -25,7 +25,7 @@ const firebaseConfig = {
     await auth.createUserWithEmailAndPassword(email, password)
   }
 
-  const loginWithEmailAndPassword = async (email, password) => {
+const loginWithEmailAndPassword = async (email, password) => {
     await auth.signInWithEmailAndPassword(email, password)
   }
 
