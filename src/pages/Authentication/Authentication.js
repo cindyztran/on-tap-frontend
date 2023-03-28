@@ -13,7 +13,11 @@ const Authentication = () => {
                 <div className="container py-5">
                     <div className="card pb-5 px-5">
                         <div className="card-body">
-                        <h5 className="card-title text-center">On Tap</h5>
+                        <h5 className="card-title text-center"
+                            style={{
+                                fontFamily: 'Staatliches'
+                            }}
+                        >On Tap</h5>
                         <div className="fs-1 text-center">
                             <FontAwesomeIcon icon={faBeerMugEmpty} />
                         </div>

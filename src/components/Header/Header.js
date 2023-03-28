@@ -1,9 +1,11 @@
-import { logout } from '../../services/firebase';
+import { loginWithGoogle, logout } from '../../services/firebase';
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faBeerMugEmpty} from '@fortawesome/free-solid-svg-icons'
 function Header(props) {
+
     return (
-        <nav className="top-nav"
+        <nav className="top-nav py-1 shadow-sm"
             style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -11,7 +13,14 @@ function Header(props) {
             }}
         >
             <Link to="/">
-                <div>On Tap</div>
+                <div>
+                    <div className='d-inline me-0'>
+                        <FontAwesomeIcon icon={faBeerMugEmpty} />
+                    </div>
+                    <div className='d-inline'>
+                        On Tap
+                    </div>
+                </div>
             </Link>
             <div 
                 style={{ display: 'flex', alignItems: 'center'}}>
@@ -38,7 +47,15 @@ function Header(props) {
                         </div>
                     </>
                     :
-                    null
+                    <div
+                    onClick={loginWithGoogle} 
+                    style={{
+                    cursor: 'pointer',
+                    marginRight: 10,
+                    color: 'white',
+                }}>
+                Login
+            </div>
                 
                 }
 
