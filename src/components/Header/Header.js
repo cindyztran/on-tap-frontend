@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faBeerMugEmpty} from '@fortawesome/free-solid-svg-icons'
 function Header(props) {
-
-    console.log({props});
     return (
         <nav className="top-nav py-1 shadow-sm"
             style={{
