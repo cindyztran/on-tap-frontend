@@ -1,11 +1,12 @@
 import { Route, Redirect } from 'react-router-dom';
 
-const PublicRoute = ({ children, isAuthenticated , ...rest }) => {
+const PublicRoute = ({ children, user , ...rest }) => {
+  
   return (
     <Route
       {...rest}
       render={(props) => (
-        !isAuthenticated ? children : 
+        user ? children : 
         <Redirect {...props} to="/signup" />
       )}
     />

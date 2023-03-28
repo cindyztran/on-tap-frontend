@@ -1,12 +1,13 @@
 import Header from "../Header/Header"
 
-const Layout = ({Component, ...rest}) => {
+const Layout = ({Component, user, ...rest}) => {
     return (
         <div>
-            <Header/>
+            <Header user={user} />
             <div className="container">
                 <Component
                     {...rest}
+                    user={user}
                 />
             </div>
         </div>

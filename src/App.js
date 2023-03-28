@@ -1,29 +1,14 @@
 import { useEffect, useState } from 'react';
 import { auth } from './services/firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import components
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Login from './components/Authentication/Login';
+import { Switch, useHistory } from 'react-router-dom';
 import PublicRoute from './components/global/PublicRoute'
 import PrivateRoute from './components/global/PrivateRoute'
 import routes from './routes'
 import Authentication from './pages/Authentication/Authentication';
 
-
-const ProtectedRoutes = () => {
-  <Switch>
-    {routes.map(({component: Component, path, exact }) => (
-      <Route
-        path
-        key={path}
-        exact={exact}
-        component={Component}
-      />
-    ))}
-  </Switch>
-}
-
 const App = () => {
+  const history = useHistory()
   //user state
   const [ user, setUser ] = useState(null);
 
@@ -35,26 +20,35 @@ const App = () => {
     return () => unsubscribe(); //clean up effect
   }, []);
 
-  return (
-    <Router>
-      <Switch>
-        {/* <PublicRoute 
-          path="/login"
-          exact
-          component={(props) => <Login {...props} />}
-        /> */}
-        <PublicRoute 
-          path="/signup"
-          exact
-          component={(props) => <Authentication {...props} />}
-        />
+  const ProtectedRoutes = () => {
+    return routes.map(({component: Component, path }, idx) => {
+      return (
         <PrivateRoute
-          isAuthenticated={user}
-        >
-          {ProtectedRoutes}
-        </PrivateRoute>
-      </Switch>
-    </Router>
+          user={user}
+          path={path}
+          key={idx}
+          exact
+          component={Component}
+        />
+
+      )
+      })
+  }
+
+  if (user) {
+    history.push('/home')
+  }
+
+  return (
+    <Switch>
+      <PublicRoute 
+        user={user}
+        path="/signup"
+        exact
+        component={(props) => <Authentication {...props} />}
+      />
+        {ProtectedRoutes()}
+    </Switch>
   );
 }
 

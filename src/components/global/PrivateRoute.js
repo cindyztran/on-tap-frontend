@@ -2,13 +2,13 @@
 import { Route, Redirect } from 'react-router-dom';
 import Layout from '../container/Layout';
 
-const PrivateRoute = ({ children, isAuthenticated, ...rest }) => {
+const PrivateRoute = ({ component: Component, user, ...rest }) => {
 
   return (
     <Route
       {...rest}
       render={(props) => (
-        isAuthenticated ? <Layout {...props} {...rest} Component={children} /> : <Redirect to="/signup" />
+        user ? <Layout user={user} {...props} {...rest} Component={Component} /> : <Redirect to="/signup" />
       )}
     />
   );
