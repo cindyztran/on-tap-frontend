@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Show({ match, history, beers, updateBeers, deleteBeers }) {
-
-    const [ editForm, setEditForm ] = useState({
+  const [ editForm, setEditForm ] = useState({
         name: '',
         image: '',
         caption: '',
@@ -13,7 +12,7 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
     });
 
     const [ beer, setBeer ] = useState(null);
-    
+
     useEffect(() => {
         if(beers) {
             const id = match.params.id;

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
-const Home = (props) => {
-
+const Index = (props) => {
     const [ newForm, setNewForm ] = useState({
         name: '',
         image: '',
@@ -81,4 +80,4 @@ const Home = (props) => {
     )
 }
 
-export default Home;
+export default Index;
