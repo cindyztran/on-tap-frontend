@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
 import Show from "./Show";
 
 const Index = (props) => {
@@ -53,15 +52,12 @@ const Index = (props) => {
             props.beers.map((beer) => (
             <div key={beer._id} className='beer'>
                 <div className="index-beer">
-                {/* <Link to={`/beers/${beer._id}`}> */}
                 <h1  onClick={() => {setShow(true); setId(beer._id)}} style={{color: '#004170'}}>{beer.name}</h1>
-                {/* </Link> */}
                 <h5>{beer.brewery} brewery in {beer.city}, {beer.state} </h5>
                 { beer.image && <img src={beer.image} alt={beer.name} />}
                 <section className="caption-box">
                     <h3 className="caption">{beer.caption}</h3>
                     <h3 className="rating">{beer.rating} / 10</h3>
-                    
                 </section>
                 </div>
             </div>
