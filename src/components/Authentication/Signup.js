@@ -1,6 +1,10 @@
+import { useState } from "react"
 import { signupWithEmailAndPassword } from "../../services/firebase"
 
 const Signup = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     return (
         <div className="">
             <div className="">
@@ -8,26 +12,22 @@ const Signup = () => {
                     <input
                         className='my-1 p-2'
                         type="text"
-                        placeholder="First Name"
-                    />
-                    <input
-                        className='my-1 p-2'
-                        type="text"
-                        placeholder="Last Name"
-                    />
-                    <input
-                        className='my-1 p-2'
-                        type="text"
                         placeholder="Email"
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                        }}
                     />
                     <input
                         className='my-1 p-2'
                         type="password"
                         placeholder="Password"
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
                     />
                     <button
                         className="my-2 rounded"
-                        onClick={() => signupWithEmailAndPassword()}
+                        onClick={() => signupWithEmailAndPassword(email, password)}
                     >
                         Signup
                     </button>
