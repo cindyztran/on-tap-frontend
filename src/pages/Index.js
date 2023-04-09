@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
+import Show from "./Show";
 
 const Index = (props) => {
     const [ newForm, setNewForm ] = useState({
@@ -11,7 +12,10 @@ const Index = (props) => {
         state: '',
         brewery: ''
     });
-    
+
+    const [show, setShow] = useState(false)
+    const [id, setId] = useState('')
+
     const handleChange = (event) => {
         //dynamically selects value in state and set to target element's value is
         setNewForm({...newForm, [event.target.name]: event.target.value})
@@ -35,15 +39,23 @@ const Index = (props) => {
             brewery: ''
         });
     }
+    const { beers, deleteBeers, updateBeers, match, history} = props;
 
     const loaded = () => {
+        if (show) {
+            return (
+            <Show match={match} history={history} beers={beers} id={id} deleteBeers={deleteBeers}
+            updateBeers={updateBeers} />)
+        }
 
-        return props.beers.map((beer) => (
+
+        return (
+            props.beers.map((beer) => (
             <div key={beer._id} className='beer'>
                 <div className="index-beer">
-                <Link to={`/beers/${beer._id}`}>
-                    <h1 style={{color: '#004170'}}>{beer.name}</h1>
-                </Link>
+                {/* <Link to={`/beers/${beer._id}`}> */}
+                <h1  onClick={() => {setShow(true); setId(beer._id)}} style={{color: '#004170'}}>{beer.name}</h1>
+                {/* </Link> */}
                 <h5>{beer.brewery} brewery in {beer.city}, {beer.state} </h5>
                 { beer.image && <img src={beer.image} alt={beer.name} />}
                 <section className="caption-box">
@@ -53,9 +65,8 @@ const Index = (props) => {
                 </section>
                 </div>
             </div>
-        ));
-
-    };
+        ))
+    )};
 
     const loading = () => {
         return <h1>Waiting for beer to pour...</h1>

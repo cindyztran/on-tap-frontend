@@ -1,26 +1,21 @@
 import { useState, useEffect } from "react";
 import Index from '../../pages/Index';
-
+// import Show from "../../pages/Show"
 const Home = (props) => {
-    //initializes beers state 
-    const [ beers, setBeers ] = useState(null); //nullifies initial value 
+    const [ beers, setBeers ] = useState(null); 
 
-    // //heroku backend
     // // const URL = 'https://on-tap-backend.herokuapp.com/beers/';
 
-    const URL = 'http://localhost:4000/beers/'
+    const URL = 'http://localhost:4000/beers'
 
-    // //fetch beers data from heroku backend
     const getBeers = async () => {
         const response = await fetch(URL);
         const data = await response.json();
         setBeers(data);
     }
 
-    // //create beers using fetch
     const createBeers = async (beer) => {
         const token = await props.user.getIdToken();
-        //post request to create beers
         await fetch(URL, {
             method: 'POST',
             headers: {
@@ -29,7 +24,6 @@ const Home = (props) => {
             },
             body: JSON.stringify(beer)
         });
-        //updates list of beers
         getBeers();
     };
 
@@ -63,7 +57,7 @@ const Home = (props) => {
     
     return (
         <div>
-            <Index user={props.isAuthenticated} beers={beers} createBeers={createBeers}/>
+            <Index match={props.match} history={props.history} user={props.isAuthenticated} beers={beers} createBeers={createBeers} deleteBeers={deleteBeers} updateBeers={updateBeers}/>
         </div>
         );
 }

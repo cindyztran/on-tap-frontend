@@ -11,7 +11,7 @@ function Header(props) {
                 justifyContent: 'space-between'
             }}
         >
-            <Link to="/">
+            <Link to="/home">
                 <div>
                     <div className='d-inline me-0'>
                         <FontAwesomeIcon icon={faBeerMugEmpty} />

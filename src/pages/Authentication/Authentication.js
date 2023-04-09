@@ -4,9 +4,11 @@ import Header from "../../components/Header/Header"
 import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons'
-const Authentication = () => {
+import { Redirect } from "react-router-dom"
+const Authentication = (props) => {
     const [showLogin, setShowLogin] = useState(false)
 
+    if (props.user) return <Redirect to="/home"/>
     return (
         <div>
             <Header/>

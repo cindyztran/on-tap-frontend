@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Show({ match, history, beers, updateBeers, deleteBeers }) {
+function Show({ match, history, beers, id, updateBeers, deleteBeers }) {
   const [ editForm, setEditForm ] = useState({
         name: '',
         image: '',
@@ -10,17 +10,15 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
         state: '',
         brewery: ''
     });
-
     const [ beer, setBeer ] = useState(null);
 
     useEffect(() => {
         if(beers) {
-            const id = match.params.id;
             const foundBeer = beers.find(b => b._id === id);
             setBeer(foundBeer);
             setEditForm(foundBeer);
         }
-    }, [beers, match])
+    }, [beers, id])
     
     const loading = () => {
         return <h1>Waiting for beer to pour...</h1>
@@ -28,23 +26,23 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
 
     
     const loaded = () => {
-
+      const { name, brewery, image, city, state, caption, rating } = beer;
         
         return (
             <div className="show">
 
                 <div className="show-beer">
-                    <button className="show-delete" onClick={() => handleDelete(beer._id)}>Delete</button>
-                    <h1 style={{color: '#004170'}}>{beer.name}</h1>
+                    <button className="show-delete" onClick={() => handleDelete(id)}>Delete</button>
+                    <h1 style={{color: '#004170'}}>{name}</h1>
 
-                    <h6>{beer.city}, {beer.state} at {beer.brewery} brewery</h6>
+                    <h6>{city}, {state} at {brewery} brewery</h6>
 
-                    { beer.image && <img src={beer.image} alt={beer.name} />}
+                    { image && <img src={image} alt={name} />}
 
                     <section className="caption-box">
 
-                        <h3 className="caption">{beer.caption}</h3>
-                        <h3 className="rating">{beer.rating}</h3>
+                        <h3 className="caption">{caption}</h3>
+                        <h3 className="rating">{rating}</h3>
 
                     </section>
 
@@ -60,8 +58,8 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const {_id, name, image, caption, rating, city, state, brewery} = editForm;
-        updateBeers({_id, name, image, caption, rating, city, state, brewery}, _id);
+        const {name, image, caption, rating, city, state, brewery} = editForm;
+        updateBeers({id, name, image, caption, rating, city, state, brewery}, id);
 
     }
 
@@ -79,49 +77,49 @@ function Show({ match, history, beers, updateBeers, deleteBeers }) {
               <input 
                 type="text" 
                 name="name" 
-                value={editForm.name} 
+                value={editForm?.name} 
                 onChange={handleChange} 
                 />
 
               <input 
                 type="text" 
                 name="image" 
-                value={editForm.image} 
+                value={editForm?.image} 
                 onChange={handleChange} 
                 />
 
               <input 
                 type="text" 
                 name="caption" 
-                value={editForm.caption} 
+                value={editForm?.caption} 
                 onChange={handleChange} 
                 />
 
               <input 
                 type="text" 
                 name="rating" 
-                value={editForm.rating} 
+                value={editForm?.rating} 
                 onChange={handleChange} 
                 />
 
               <input 
                 type="text" 
                 name="city" 
-                value={editForm.city} 
+                value={editForm?.city} 
                 onChange={handleChange} 
                 />
 
               <input 
                 type="text" 
                 name="state" 
-                value={editForm.state} 
+                value={editForm?.state} 
                 onChange={handleChange} 
                 />
 
               <input 
                 type="text" 
                 name="brewery" 
-                value={editForm.brewery} 
+                value={editForm?.brewery} 
                 onChange={handleChange} 
                 /><br/>
 
