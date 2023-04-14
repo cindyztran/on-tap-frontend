@@ -39,7 +39,7 @@ The app was created based on a vision of a social media app for to users to shar
 ## Getting Started
 [Click here](https://trello.com/b/KSW0B6jO/project-3) to see the project's planning. 
 
-[Click here](https://on-tap-frontend.herokuapp.com/) to see the deployed app.
+[Click here](https://on-tap.onrender.com/signup) to see the deployed app.
 
 ## Future Enhancements
 - As a user, I should be able to favorite a post 
